@@ -12,7 +12,7 @@ import {
   Alert,
   TextInput,
 } from 'react-native';
-import {launchImageLibrary} from 'react-native-image-picker';
+import {launchImageLibrary, launchCamera} from 'react-native-image-picker';
 
 import {PropertyContext} from '../../Context';
 
@@ -132,6 +132,14 @@ const Details = ({route, navigation}) => {
     });
   };
 
+  const openCamera = async () => {
+    await launchCamera({mediaType: 'photo'}, async response => {
+      if (!response.didCancel) {
+        setNoteImage(response.assets[0]);
+      }
+    });
+  };
+
   const handleChooseNoteImage = async () => {
     await launchImageLibrary({mediaType: 'photo'}, response => {
       if (!response.didCancel) {
@@ -148,7 +156,7 @@ const Details = ({route, navigation}) => {
   return (
     <Fragment>
       {loading ? (
-        <Text>Loading</Text>
+        <Text>Loading...</Text>
       ) : (
         <Fragment>
           {property && (
@@ -237,6 +245,13 @@ const Details = ({route, navigation}) => {
                         <Button
                           onPress={handleChooseNoteImage}
                           title={noteImage === null ? '+ Add image' : 'Edit'}
+                        />
+                      </View>
+                      <View style={{width: 150, marginTop: 8}}>
+                        <Button
+                          color="#cc026a"
+                          onPress={openCamera}
+                          title="Capture image"
                         />
                       </View>
                       {noteImage !== null && (
