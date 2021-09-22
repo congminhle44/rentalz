@@ -1,11 +1,20 @@
 /** @format */
 
 import React from 'react';
-import {Image, Text, View} from 'react-native';
+import {Button, Image, Text, View, Vibration, ScrollView} from 'react-native';
+
+import RNBeep from 'react-native-a-beep';
 
 const Home = () => {
   return (
-    <View>
+    <ScrollView>
+      <Button
+        onPress={() => {
+          RNBeep.beep();
+        }}
+        title="Press to beep"
+      />
+      <Button onPress={() => Vibration.vibrate()} title="Press to vibrate" />
       <Text style={styles.tite}>Welcome to RentalZ</Text>
       <Text style={styles.content}>
         Enjoy your house rental with us. We bring the best service on renting
@@ -17,7 +26,7 @@ const Home = () => {
           source={require('../../assets/brand.png')}
         />
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

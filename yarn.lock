@@ -5691,6 +5691,11 @@ react-is@^16.13.0, react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
+react-native-a-beep@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-a-beep/-/react-native-a-beep-1.1.0.tgz#4c53b50ba2b8551b621df0e0e0f0e7a232f391f7"
+  integrity sha512-Twe3swF6jtOR6sB5DTPH1SBVyqQeivsKEtThwBV3accKz1LF9ZUyo6C9sD6OVaLksupIJaz/smmT1+AZ0vlARw==
+
 react-native-codegen@^0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/react-native-codegen/-/react-native-codegen-0.0.7.tgz#86651c5c5fec67a8077ef7f4e36f7ed459043e14"
