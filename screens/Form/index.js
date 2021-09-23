@@ -41,6 +41,11 @@ const Form = () => {
 
   const postStation = payload => {
     setLoading(true);
+    Object.keys(payload).map(
+      k =>
+        (payload[k] =
+          typeof payload[k] == 'string' ? payload[k].trim() : payload[k]),
+    );
     const newProperty = {
       ...payload,
       price: parseInt(payload.price),
@@ -57,7 +62,12 @@ const Form = () => {
       })
       .catch(err => {
         setLoading(false);
-        showAlert('Error', err.response.data?.message);
+        showAlert(
+          'Error',
+          err.response.data.message
+            ? err.response.data.message
+            : 'Please fill all the required inputs',
+        );
       });
   };
 
