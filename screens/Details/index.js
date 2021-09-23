@@ -61,6 +61,13 @@ const Details = ({route, navigation}) => {
     }
   };
 
+  console.log(notes);
+
+  useEffect(() => {
+    getPropertyDetails();
+    getPropertyNotes();
+  }, []);
+
   const deleteProperty = async propertyId => {
     setLoading(true);
     try {
@@ -86,7 +93,14 @@ const Details = ({route, navigation}) => {
       const formData = new FormData();
       formData.append('content', note);
       formData.append('image', selectedNoteImage);
-      await axios.post(`${baseApi}/properties/${itemId}/notes`, formData);
+      await axios({
+        url: `${baseApi}/properties/${itemId}/notes`,
+        method: 'POST',
+        data: formData,
+        headers: {
+          'Content-Type': 'multipart/form-data;',
+        },
+      });
       setNoteImage(null);
       setNote('');
       getPropertyNotes();
@@ -122,6 +136,9 @@ const Details = ({route, navigation}) => {
             url: `${baseApi}/properties/${itemId}/thumbnail`,
             method: 'PATCH',
             data: body,
+            headers: {
+              'Content-Type': 'multipart/form-data;',
+            },
           });
           console.log(result.status);
           getPropertyDetails();
@@ -147,11 +164,6 @@ const Details = ({route, navigation}) => {
       }
     });
   };
-
-  useEffect(() => {
-    getPropertyDetails();
-    getPropertyNotes();
-  }, []);
 
   return (
     <Fragment>
