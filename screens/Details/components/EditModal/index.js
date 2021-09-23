@@ -45,6 +45,11 @@ const EditModal = ({modalVis, closeModal, property, getProperty}) => {
 
   const editProperty = payload => {
     setLoading(true);
+    Object.keys(payload).map(
+      k =>
+        (payload[k] =
+          typeof payload[k] == 'string' ? payload[k].trim() : payload[k]),
+    );
     const editedProperty = {
       ...payload,
       price: parseInt(payload.price),
