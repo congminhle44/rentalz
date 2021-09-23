@@ -72,7 +72,12 @@ const EditModal = ({modalVis, closeModal, property, getProperty}) => {
       })
       .catch(err => {
         setLoading(false);
-        showAlert('Error', err.response.data?.message);
+        showAlert(
+          'Error',
+          err.response.data.message
+            ? err.response.data.message
+            : 'Please fill all the required inputs',
+        );
       });
   };
 
